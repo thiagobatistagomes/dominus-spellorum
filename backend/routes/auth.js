@@ -1,11 +1,10 @@
 const express = require('express');
-const fs = require('fs-extra');
-const path = require('path');
 const jwt = require('jsonwebtoken');
+const { v4: uuidv4 } = require('uuid');
+const { buscarUsuarioPorEmail, attBdUsuarios, acessarBancoUsuarios } = require('../repositories/usuariosBD');
 
 const router = express.Router();
-const usuariosPath = path.resolve(process.env.USUARIOS_JSON);
-const JWT_SECRET = 'segredo-mistico';
+const JWT_SECRET = process.env.JWT_SECRET;
 
 function emailValido(email) {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -35,15 +34,16 @@ router.post('/register', async (req, res) => {
     return res.status(400).json({ mensagem: 'As senhas não coincidem.' });
   }
 
-  const usuarios = await fs.readJSON(usuariosPath);
 
   // 5. Verificar e-mail único
-  const jaExiste = usuarios.find(u => u.email === email);
+  const jaExiste = await buscarUsuarioPorEmail(email);
   if (jaExiste) {
-    return res.status(400).json({ mensagem: 'E-mail já cadastrado.' });
+    return res.status(400).json({ mensagem: 'Não foi possível realizar o cadastro. Verifique os dados e tente novamente.' });
   }
+  
 
   const novoUsuario = {
+    id: uuidv4(),
     nome,
     email,
     senha,
@@ -51,8 +51,9 @@ router.post('/register', async (req, res) => {
     feiticosAAprender: []
   };
 
-  usuarios.push(novoUsuario);
-  await fs.writeJSON(usuariosPath, usuarios, { spaces: 2 });
+  const bdUsuarios = await acessarBancoUsuarios();
+  bdUsuarios.push(novoUsuario);
+  await attBdUsuarios(bdUsuarios);
 
   res.status(201).json({ mensagem: 'Usuário cadastrado com sucesso.' });
 });
@@ -66,28 +67,28 @@ router.post('/login', async (req, res) => {
     return res.status(400).json({ mensagem: 'E-mail e senha obrigatórios.' });
   }
 
-  const usuarios = await fs.readJSON(usuariosPath);
-  const usuario = usuarios.find(u => u.email === email && u.senha === senha);
+  try{
+    const usuario = await buscarUsuarioPorEmail(email);
 
-  if (!usuario) {
-    return res.status(401).json({ mensagem: 'Credenciais inválidas.' });
+    if (!usuario || usuario.senha !== senha) {
+      return res.status(401).json({ mensagem: 'Credenciais inválidas.' });
+    }
+
+    const token = jwt.sign({ email: usuario.email }, JWT_SECRET, { expiresIn: '2h' });
+
+    res.status(200).json({
+      mensagem: 'Juro solenemente que não pretendo fazer nada de bom.',
+      token,
+      nome: usuario.nome
+    });
+
+  }catch(erro){
+    console.error('Erro no login:', erro);
+    res.status(500).json({ mensagem: 'Erro interno ao tentar realizar login.' });
   }
 
-  const token = jwt.sign({ email: usuario.email }, JWT_SECRET, { expiresIn: '2h' });
-
-  res.status(200).json({
-    mensagem: "Juro solenemente que não pretendo fazer nada de bom.",
-    token,
-    nome: usuario.nome
-  });
 });
 
 
-// LOGOUT
-router.post('/logout', (req, res) => {
-  res.status(200).json({
-    mensagem: "Malfeito feito. Sua sessão foi encerrada."
-  });
-});
 
 module.exports = router;

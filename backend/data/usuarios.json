@@ -1,9 +1,72 @@
 [
   {
+    "id": "d7fcf560-0083-4709-81f2-310b05e6c661",
     "nome": "Hermione Granger",
     "email": "hermione@hogwarts.com",
     "senha": "1234",
+    "feiticosDominados": [
+      {
+        "name": "Alohomora",
+        "description": "Unlocks objects",
+        "comentario": "Feitiço essencial pra escapar de salas trancadas!"
+      },
+      {
+        "name": "Wingardium Leviosa",
+        "description": "Causes an object to levitate; but remember what Hermione said: \"It's Wing-gar-dium Levi-o-sa, make the 'gar' nice and long.'\"",
+        "comentario": "Aprendam a entonar corretamente o feitiço!"
+      },
+      {
+        "name": "Sonorus",
+        "description": "Amplifies the witch or wizard's voice",
+        "comentario": ""
+      }
+    ],
+    "feiticosAAprender": []
+  },
+  {
+    "id": "6f013a7e-ea37-4a2d-8881-476d6492df33",
+    "nome": "Rony Weasley",
+    "email": "ron@hogwarts.com",
+    "senha": "4321",
     "feiticosDominados": [],
     "feiticosAAprender": []
+  },
+  {
+    "id": "f76b40c3-120b-46b6-8c2a-1522f748fa1f",
+    "nome": "Harry Potter",
+    "email": "harry@hogwarts.com",
+    "senha": "4321",
+    "feiticosDominados": [],
+    "feiticosAAprender": []
+  },
+  {
+    "id": "6661e131-9ef4-497a-88e3-6c9687f4654e",
+    "nome": "Ginnny Weasley",
+    "email": "ginny@hogwarts.com",
+    "senha": "4321",
+    "feiticosDominados": [
+      {
+        "name": "Sonorus",
+        "description": "Amplifies the witch or wizard's voice",
+        "comentario": "Meu primeiro feitiço!"
+      },
+      {
+        "name": "Alohomora",
+        "description": "Unlocks objects",
+        "comentario": ""
+      },
+      {
+        "name": "Wingardium Leviosa",
+        "description": "Causes an object to levitate; but remember what Hermione said: \"It's Wing-gar-dium Levi-o-sa, make the 'gar' nice and long.'\"",
+        "comentario": ""
+      }
+    ],
+    "feiticosAAprender": [
+      {
+        "name": "Expecto patronum",
+        "description": "The Patronus Charm is a powerful projection of hope and happiness that drives away Dementors; a corpeal Patronus takes the the respective animal form of the caster, while a non-corpeal appears as a wisp of light; at 13, Harry Potter was the youngest known witch or wizard to prouduce a corpeal Patronus",
+        "comentario": ""
+      }
+    ]
   }
 ]
