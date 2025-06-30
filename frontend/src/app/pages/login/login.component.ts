@@ -42,8 +42,8 @@ export class LoginComponent {
     const loginData: LoginDTO = this.loginForm.value;
 
     this.authService.login(loginData).subscribe({
-      next: () => {this.toastr.success("Login realizado com sucesso!"), this.router.navigate(["dashboard"])},
-      error: () => this.toastr.error("Erro inesperado! Tente novamente mais tarde!")
+      next: () => {this.toastr.success("Juro solenemente não fazer nada de bom!"), this.router.navigate(["dashboard"])},
+      error: () => this.toastr.error("Feito por Aluado, Rabicho, Almofadinhas e Pontas e dedicado aos nossos amigos trapaceiros. Nada para ver aqui!")
     })
   }
 
