@@ -68,5 +68,21 @@
         "comentario": ""
       }
     ]
+  },
+  {
+    "id": "c0714c42-3987-4e3f-a17c-c4aa3b2efac6",
+    "nome": "draco",
+    "email": "draco@hogwarts.com",
+    "senha": "1234",
+    "feiticosDominados": [],
+    "feiticosAAprender": []
+  },
+  {
+    "id": "9f8e500f-6688-41cc-bbd1-27da8b2bb824",
+    "nome": "Fred",
+    "email": "fred@hogwarts.com",
+    "senha": "1234",
+    "feiticosDominados": [],
+    "feiticosAAprender": []
   }
 ]
