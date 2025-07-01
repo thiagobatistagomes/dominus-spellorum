@@ -8,7 +8,7 @@
       {
         "name": "Alohomora",
         "description": "Unlocks objects",
-        "comentario": "Feitiço essencial pra escapar de salas trancadas!"
+        "comentario": "Teste edição!"
       },
       {
         "name": "Wingardium Leviosa",
@@ -18,7 +18,7 @@
       {
         "name": "Sonorus",
         "description": "Amplifies the witch or wizard's voice",
-        "comentario": ""
+        "comentario": "Atualizando comentário"
       }
     ],
     "feiticosAAprender": []

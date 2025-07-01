@@ -137,4 +137,40 @@ router.post('/a-aprender', verifyToken, async (req, res) => {
 
 });
 
+
+router.put('/dominados/:nome', verifyToken, async (req, res) => {
+  const { nome } = req.params;
+  const { comentario } = req.body;
+
+  // trim() é a função que remove espaços em strings em javascript
+  if (!comentario || comentario.trim().length === 0) {
+    return res.status(400).json({ mensagem: 'Comentário é obrigatório.' });
+  }
+
+  try {
+    const usuarios = await acessarBancoUsuarios();
+    const usuario = usuarios.find(u => u.email === req.email);
+
+    if (!usuario) {
+      return res.status(404).json({ mensagem: 'Usuário não encontrado!' });
+    }
+
+    const feitico = usuario.feiticosDominados.find(f => f.name.toLowerCase() === nome.toLowerCase());
+
+    if (!feitico) {
+      return res.status(404).json({ mensagem: 'Feitiço não encontrado na lista do usuário.' });
+    }
+
+    feitico.comentario = comentario;
+
+    await attBdUsuarios(usuarios);
+
+    return res.status(200).json({ mensagem: 'Comentário atualizado com sucesso.' });
+  } catch (erro) {
+      console.error('Erro ao atualizar comentário:', erro);
+      return res.status(500).json({ mensagem: 'Erro interno ao atualizar o feitiço.' });
+  }
+
+})
+
 module.exports = router;
