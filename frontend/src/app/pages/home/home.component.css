@@ -1,0 +1,35 @@
+.home-container {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 2rem;
+}
+
+h2 {
+  font-size: 2rem;
+  color: black;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1.4rem;
+  color: black;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.cta-button {
+  background-color: #c0a060;
+  color: #1a1a1a;
+  border: 2px solid #a58c50;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #d8b36a;
+  cursor: pointer;
+}

@@ -1,72 +1,108 @@
-form {
-  max-width: 350px;
-  margin: 0 auto;
+/* :host é uma forma de referenciar o elemento que representa o componente inteiro, nesse caso app-register */
+:host {
+  font-family: 'Cormorant Garamond', serif;
+  color: #f5f5dc;
+  display: block;
+  min-width: 550px;
+  max-width: 900px;
+  margin: 2rem auto;
+  background-color: rgba(0, 0, 0, 0.7);
   padding: 2rem;
-  border: 1px solid #ddd;
+  border: 2px solid #c0a060;
   border-radius: 8px;
-  background-color: #fdfdfd;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  box-shadow: 0 0 10px #000;
 }
+
 
 h2 {
   text-align: center;
+  color: #c0a060;
+  font-family: 'Cinzel Decorative', serif;
   margin-bottom: 1.5rem;
-  color: #333;
 }
 
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+
+label {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: #f5f5dc;
+  font-weight: 600;
+}
+
+
+input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #c0a060;
+  border-radius: 4px;
+  background-color: #1a1a1a;
+  color: #f5f5dc;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: #d8b36a;
+  background-color: #222;
+}
+
+
 .form-group {
-  margin-bottom: 1.25rem;
   display: flex;
   flex-direction: column;
 }
 
-label {
-  margin-bottom: 0.4rem;
-  font-weight: bold;
-}
-
-input {
-  padding: 0.6rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1rem;
-}
-
-input.ng-invalid.ng-touched {
-  border-color: #dc3545;
-}
 
 .error-messages {
-  color: #dc3545;
-  font-size: 0.85rem;
   margin-top: 0.25rem;
+  color: #d96c6c;
+  font-size: 0.875rem;
 }
 
-button {
-  width: 100%;
-  padding: 0.7rem;
-  font-size: 1rem;
-  color: white;
-  background-color: #007bff;
+
+button[type="submit"] {
+  background-color: #c0a060;
+  color: #1a1a1a;
   border: none;
+  padding: 0.75rem;
   border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
   transition: background-color 0.3s ease;
+  font-family: 'Cormorant Garamond', serif;
 }
 
-button:disabled {
-  background-color: #6c757d;
+button[type="submit"]:hover {
+  background-color: #d8b36a;
 }
 
-button:hover{
-  cursor: pointer
+button[type="submit"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
-.link {
+
+p.link {
   text-align: center;
   margin-top: 1rem;
+  color: #f5f5dc;
 }
 
-.link a {
-  color: #007bff;
+p.link a {
+  color: #c0a060;
   text-decoration: underline;
+  cursor: pointer;
+}
+
+p.link a:hover {
+  color: #d8b36a;
 }

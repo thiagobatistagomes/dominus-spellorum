@@ -1,0 +1,63 @@
+<div class="dashboard-container">
+  <h2>Lista de Feitiços</h2>
+
+  <div *ngIf="loading" class="loading">Carregando dados...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div *ngIf="!loading && !error" class="lists-container">
+
+    
+    <div class="list-column">
+      <h3>✨ Feitiços Dominados</h3>
+      <ul *ngIf="feiticosDominados.length > 0; else nenhumDominado">
+        <li *ngFor="let f of feiticosDominados" (click)="selecionarFeitico('dominados', f.name)" [class.selected]="feiticoSelecionado?.tipo === 'dominados' && feiticoSelecionado?.nome === f.name">
+          <strong>{{ f.name }}</strong><br>
+          <span>{{ f.description }}</span><br>
+          <em>Comentário:</em> {{ f.comentario || 'Nenhum comentário' }}<br>
+
+          <button *ngIf="feiticoSelecionado?.tipo === 'dominados' && feiticoSelecionado?.nome === f.name" (click)="editarDominado(f.name); $event.stopPropagation()">
+            Editar
+          </button>
+          <button *ngIf="feiticoSelecionado?.tipo === 'dominados' && feiticoSelecionado?.nome === f.name" (click)="excluirDominado(f.name); $event.stopPropagation()">
+            Excluir
+          </button>
+        </li>
+
+      </ul>
+      <ng-template #nenhumDominado>
+        <p class="empty">Nenhum feitiço dominado ainda.</p>
+      </ng-template>
+
+      <button (click)="adicionarDominado()">Adicionar Feitiço Dominado</button>
+
+      
+    </div>
+
+    
+    <div class="list-column">
+      <h3>📚 Feitiços a Aprender</h3>
+      <ul *ngIf="feiticosAAprender.length > 0; else nenhumAAprender">
+        <li *ngFor="let f of feiticosAAprender" (click)="selecionarFeitico('a-aprender', f.name)" [class.selected]="feiticoSelecionado?.tipo === 'a-aprender' && feiticoSelecionado?.nome === f.name">
+          <strong>{{ f.name }}</strong><br>
+          <span>{{ f.description }}</span><br>
+          <em>Comentário:</em> {{ f.comentario || 'Nenhum comentário' }}<br>
+
+          <button *ngIf="feiticoSelecionado?.tipo === 'a-aprender' && feiticoSelecionado?.nome === f.name" (click)="editarAAprender(f.name); $event.stopPropagation()">
+            Editar
+          </button>
+          <button *ngIf="feiticoSelecionado?.tipo === 'a-aprender' && feiticoSelecionado?.nome === f.name" (click)="excluirAAprender(f.name); $event.stopPropagation()">
+            Excluir
+          </button>
+        </li>
+
+      </ul>
+      <ng-template #nenhumAAprender>
+        <p class="empty">Nenhum feitiço na lista de aprendizado.</p>
+      </ng-template>
+      
+      <button (click)="adicionarAAprender()">Adicionar Feitiço a Aprender</button>
+      
+    </div>
+
+  </div>
+</div>

@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { FormGroup, ReactiveFormsModule } from "@angular/forms";
-import { RegisterForm } from "../../shared/models/registerForm.model";
+import { RegisterForm } from "../../shared/models/users/registerForm.model";
 import { Router } from "@angular/router";
 import { AuthService } from "../../services/auth.service";
 import { RegisterDTO } from "../../shared/dto/register.dto";
