@@ -1,0 +1,22 @@
+<h2>Editar Comentário do Feitiço</h2>
+
+<div class="info">
+  <p><strong>Feitiço:</strong> {{ nomeFeitico }}</p>
+  <p><strong>Tipo:</strong> {{ tipoSelecionado }}</p>
+</div>
+
+<form [formGroup]="editForm" (ngSubmit)="submit()" novalidate>
+  <div class="form-group">
+    <label for="comentario">Comentário</label>
+    <input id="comentario" type="text" formControlName="comentario" placeholder="Novo comentário ou observação">
+    <div class="error-messages" *ngIf="editForm.get('comentario')?.touched && editForm.get('comentario')?.invalid">
+      <small>Comentário inválido.</small>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="editForm.invalid">Salvar Alteração</button>
+
+  <p class="link">
+    <a (click)="navigate()" style="cursor: pointer;">Cancelar e voltar</a>
+  </p>
+</form>

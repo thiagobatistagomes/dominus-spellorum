@@ -1,0 +1,24 @@
+<h2>Adicionar Feitiço</h2>
+
+<form [formGroup]="addForm" (ngSubmit)="submit()" novalidate>
+
+  <div class="form-group">
+    <label for="name">Nome do Feitiço</label>
+    <input id="name" type="text" formControlName="name" required placeholder="Ex.: Expelliarmus">
+    <div class="error-messages" *ngIf="addForm.get('name')?.touched && addForm.get('name')?.invalid">
+      <small>O nome do feitiço é obrigatório.</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="comentario">Comentário (opcional)</label>
+    <input id="comentario" type="text" formControlName="comentario" placeholder="Observações ou lembretes">
+  </div>
+
+  <button type="submit" [disabled]="addForm.invalid">+ Adicionar</button>
+
+  <p class="link">
+    <a (click)="navigate()" style="cursor: pointer;">Cancelar e voltar</a>
+  </p>
+  
+</form>
