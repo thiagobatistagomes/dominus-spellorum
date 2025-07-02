@@ -142,10 +142,6 @@ router.put('/dominados/:nome', verifyToken, async (req, res) => {
   const { nome } = req.params;
   const { comentario } = req.body;
 
-  // trim() é a função que remove espaços em strings em javascript
-  if (!comentario || comentario.trim().length === 0) {
-    return res.status(400).json({ mensagem: 'Comentário é obrigatório.' });
-  }
 
   try {
     const usuarios = await acessarBancoUsuarios();
@@ -172,5 +168,95 @@ router.put('/dominados/:nome', verifyToken, async (req, res) => {
   }
 
 })
+
+router.put('/a-aprender/:nome', verifyToken, async (req, res) => {
+  const { nome } = req.params;
+  const { comentario } = req.body;
+
+  
+
+  try {
+    const usuarios = await acessarBancoUsuarios();
+    const usuario = usuarios.find(u => u.email === req.email);
+
+    if (!usuario) {
+      return res.status(404).json({ mensagem: 'Usuário não encontrado!' });
+    }
+
+    const feitico = usuario.feiticosAAprender.find(f => f.name.toLowerCase() === nome.toLowerCase());
+
+    if (!feitico) {
+      return res.status(404).json({ mensagem: 'Feitiço não encontrado na lista do usuário.' });
+    }
+
+    feitico.comentario = comentario;
+    await attBdUsuarios(usuarios);
+
+    return res.status(200).json({ mensagem: 'Comentário atualizado com sucesso.' });
+
+  } catch (erro) {
+    console.error('Erro ao atualizar comentário:', erro);
+    return res.status(500).json({ mensagem: 'Erro interno ao atualizar o feitiço.' });
+  }
+});
+
+
+router.delete('/dominados/:nome', verifyToken, async (req, res) => {
+  const { nome } = req.params;
+
+  try {
+    const usuarios = await acessarBancoUsuarios();
+    const usuario = usuarios.find(u => u.email === req.email);
+
+    if (!usuario) {
+      return res.status(404).json({ mensagem: 'Usuário não encontrado!' });
+    }
+
+    const index = usuario.feiticosDominados.findIndex(f => f.name.toLowerCase() === nome.toLowerCase());
+
+    if (index === -1) {
+      return res.status(404).json({ mensagem: 'Feitiço não encontrado na lista de dominados.' });
+    }
+
+    usuario.feiticosDominados.splice(index, 1);
+    await attBdUsuarios(usuarios);
+
+    return res.status(200).json({ mensagem: 'Feitiço removido com sucesso.' });
+
+  } catch (erro) {
+    console.error('Erro ao remover feitiço:', erro);
+    return res.status(500).json({ mensagem: 'Erro interno ao remover feitiço.' });
+  }
+});
+
+
+router.delete('/a-aprender/:nome', verifyToken, async (req, res) => {
+  const { nome } = req.params;
+
+  try {
+    const usuarios = await acessarBancoUsuarios();
+    const usuario = usuarios.find(u => u.email === req.email);
+
+    if (!usuario) {
+      return res.status(404).json({ mensagem: 'Usuário não encontrado!' });
+    }
+
+    const index = usuario.feiticosAAprender.findIndex(f => f.name.toLowerCase() === nome.toLowerCase());
+
+    if (index === -1) {
+      return res.status(404).json({ mensagem: 'Feitiço não encontrado na lista de feitiços a aprender.' });
+    }
+
+    usuario.feiticosAAprender.splice(index, 1);
+    await attBdUsuarios(usuarios);
+
+    return res.status(200).json({ mensagem: 'Feitiço removido com sucesso.' });
+
+  } catch (erro) {
+    console.error('Erro ao remover feitiço:', erro);
+    return res.status(500).json({ mensagem: 'Erro interno ao remover feitiço.' });
+  }
+});
+
 
 module.exports = router;

@@ -19,9 +19,30 @@
         "name": "Sonorus",
         "description": "Amplifies the witch or wizard's voice",
         "comentario": "Atualizando comentário"
+      },
+      {
+        "name": "Anapneo",
+        "description": "Clears someone's airway",
+        "comentario": ""
       }
     ],
-    "feiticosAAprender": []
+    "feiticosAAprender": [
+      {
+        "name": "Aberto",
+        "description": "Opens locked doors",
+        "comentario": "Quero muito aprender isso!"
+      },
+      {
+        "name": "Apparate",
+        "description": "A non-verbal transportation spell that allows a witch or wizard to instantly travel on the spot and appear at another location (disapparate is the opposite)",
+        "comentario": null
+      },
+      {
+        "name": "Aparecium",
+        "description": "Reveals secret written messages",
+        "comentario": ""
+      }
+    ]
   },
   {
     "id": "6f013a7e-ea37-4a2d-8881-476d6492df33",
@@ -36,8 +57,50 @@
     "nome": "Harry Potter",
     "email": "harry@hogwarts.com",
     "senha": "4321",
-    "feiticosDominados": [],
-    "feiticosAAprender": []
+    "feiticosDominados": [
+      {
+        "name": "Expecto patronum",
+        "description": "The Patronus Charm is a powerful projection of hope and happiness that drives away Dementors; a corpeal Patronus takes the the respective animal form of the caster, while a non-corpeal appears as a wisp of light; at 13, Harry Potter was the youngest known witch or wizard to prouduce a corpeal Patronus",
+        "comentario": ""
+      },
+      {
+        "name": "Accio",
+        "description": "Summons objects",
+        "comentario": null
+      },
+      {
+        "name": "Aberto",
+        "description": "Opens locked doors",
+        "comentario": null
+      },
+      {
+        "name": "Anapneo",
+        "description": "Clears someone's airway",
+        "comentario": null
+      },
+      {
+        "name": "Apparate",
+        "description": "A non-verbal transportation spell that allows a witch or wizard to instantly travel on the spot and appear at another location (disapparate is the opposite)",
+        "comentario": null
+      },
+      {
+        "name": "Ascendio",
+        "description": "Propells someone into the air",
+        "comentario": null
+      },
+      {
+        "name": "Avada Kedavra",
+        "description": "Also known as The Killing Curse, the most evil spell in the Wizarding World; one of three Unforgivable Curses; Harry Potter is the only known witch or wizard to survive it",
+        "comentario": null
+      }
+    ],
+    "feiticosAAprender": [
+      {
+        "name": "Alohomora",
+        "description": "Unlocks objects",
+        "comentario": ""
+      }
+    ]
   },
   {
     "id": "6661e131-9ef4-497a-88e3-6c9687f4654e",
@@ -82,7 +145,24 @@
     "nome": "Fred",
     "email": "fred@hogwarts.com",
     "senha": "1234",
-    "feiticosDominados": [],
-    "feiticosAAprender": []
+    "feiticosDominados": [
+      {
+        "name": "Alohomora",
+        "description": "Unlocks objects",
+        "comentario": ""
+      }
+    ],
+    "feiticosAAprender": [
+      {
+        "name": "Aguamenti",
+        "description": "Summons water",
+        "comentario": ""
+      },
+      {
+        "name": "Anapneo",
+        "description": "Clears someone's airway",
+        "comentario": ""
+      }
+    ]
   }
 ]

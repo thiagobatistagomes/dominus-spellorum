@@ -7,6 +7,7 @@ function verifyToken(req, res, next) {
     return res.status(401).json({ mensagem: 'Token não fornecido.' });
   }
 
+  // dividir a string ['Bearer', 'eyJhbGciOiJIUzI1NiIsInR5cCI6...']
   const token = authHeader.split(' ')[1];
 
   try {
