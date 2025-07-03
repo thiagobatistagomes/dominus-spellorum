@@ -10,6 +10,10 @@ const { acessarBancoUsuarios, buscarUsuarioPorEmail, attBdUsuarios } = require('
 
 const usuariosPath = path.resolve(process.env.USUARIOS_JSON);
 
+
+const statusPermitidos = ['pendente', 'em progresso'];
+const prioridadesPermitidas = ['alta', 'média', 'baixa'];
+
 router.get('/', verifyToken, async (req, res) => {
   try {
     const usuario = await buscarUsuarioPorEmail(req.email);
@@ -84,10 +88,18 @@ router.post('/dominados', verifyToken, async (req, res) => {
 
 
 router.post('/a-aprender', verifyToken, async (req, res) => {
-  const { name, comentario='' } = req.body;
+  const { name, comentario = '', status = 'pendente', prioridade = 'média' } = req.body;
 
   if(!name){
     res.status(500).json({ mensagem: 'O nome do feitiço é obrigatório!' });
+  }
+
+  if (!statusPermitidos.includes(status)) {
+    return res.status(400).json({ mensagem: `Status inválido! Valores permitidos: ${statusPermitidos.join(', ')}` });
+  }
+
+  if (!prioridadesPermitidas.includes(prioridade)) {
+    return res.status(400).json({ mensagem: `Prioridade inválida! Valores permitidos: ${prioridadesPermitidas.join(', ')}` });
   }
 
   try{
@@ -124,7 +136,9 @@ router.post('/a-aprender', verifyToken, async (req, res) => {
     usuario.feiticosAAprender.push({
       name: feiticoValido.name,
       description: feiticoValido.description,
-      comentario
+      comentario,
+      status,
+      prioridade
     });
 
     await attBdUsuarios(usuarios);
@@ -171,7 +185,7 @@ router.put('/dominados/:nome', verifyToken, async (req, res) => {
 
 router.put('/a-aprender/:nome', verifyToken, async (req, res) => {
   const { nome } = req.params;
-  const { comentario } = req.body;
+  const { comentario, status, prioridade } = req.body;
 
   
 
@@ -187,6 +201,20 @@ router.put('/a-aprender/:nome', verifyToken, async (req, res) => {
 
     if (!feitico) {
       return res.status(404).json({ mensagem: 'Feitiço não encontrado na lista do usuário.' });
+    }
+
+    if (status !== undefined) {
+      if (!statusPermitidos.includes(status)) {
+        return res.status(400).json({ mensagem: `Status inválido! Valores permitidos: ${statusPermitidos.join(', ')}` });
+      }
+      feitico.status = status;
+    }
+
+    if (prioridade !== undefined) {
+      if (!prioridadesPermitidas.includes(prioridade)) {
+        return res.status(400).json({ mensagem: `Prioridade inválida! Valores permitidos: ${prioridadesPermitidas.join(', ')}` });
+      }
+      feitico.prioridade = prioridade;
     }
 
     feitico.comentario = comentario;
