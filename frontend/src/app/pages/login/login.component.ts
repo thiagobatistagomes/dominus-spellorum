@@ -45,6 +45,8 @@ export class LoginComponent {
       next: () => {this.toastr.success("Juro solenemente não fazer nada de bom!"), this.router.navigate(["dashboard"])},
       error: () => this.toastr.error("Feito por Aluado, Rabicho, Almofadinhas e Pontas e dedicado aos nossos amigos trapaceiros. Nada para ver aqui!")
     })
+
+    this.loginForm.reset();
   }
 
   navigate(){

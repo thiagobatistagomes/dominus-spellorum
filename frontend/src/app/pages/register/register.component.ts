@@ -61,6 +61,8 @@ export class RegisterComponent {
             next: () => {this.toastr.success("Cadastro realizado com sucesso!"), this.router.navigate(["auth/login"])},
             error: () => this.toastr.error("Erro inesperado! Tente novamente mais tarde!")
         })
+
+        this.registerForm.reset();
     }
 
     navigate(){

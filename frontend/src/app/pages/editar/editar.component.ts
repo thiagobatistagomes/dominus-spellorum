@@ -69,6 +69,8 @@ export class EditarComponent {
             next: () => {this.toastr.success("Comentário adicionado com sucesso!"), this.router.navigate(["/dashboard"])},
             error: () => this.toastr.error("Erro inesperado! Tente novamente mais tarde!")
         })
+
+        this.editForm.reset();
     }
 
     navigate(){
