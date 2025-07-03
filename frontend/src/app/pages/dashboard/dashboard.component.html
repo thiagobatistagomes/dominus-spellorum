@@ -41,6 +41,8 @@
           <strong>{{ f.name }}</strong><br>
           <span>{{ f.description }}</span><br>
           <em>Comentário:</em> {{ f.comentario || 'Nenhum comentário' }}<br>
+          <p>Status: {{ f.status }}</p>
+          <p>Prioridade: {{ f.prioridade }}</p>
 
           <button *ngIf="feiticoSelecionado?.tipo === 'a-aprender' && feiticoSelecionado?.nome === f.name" (click)="editarAAprender(f.name); $event.stopPropagation()">
             Editar

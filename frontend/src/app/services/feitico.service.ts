@@ -2,9 +2,9 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 
-import { FeiticoResponseDTO } from '../shared/dto/feiticoResponse';
-import { AdicionarFeiticoDTO } from '../shared/dto/adicionarFeitico';
-import { EditarFeiticoDTO } from '../shared/dto/editarFeitico';
+import { FeiticoAAprenderResponseDTO, FeiticoDominadoResponseDTO } from '../shared/dto/feiticoResponse';
+import { AdicionarDominadoDTO, AdicionarAAprenderDTO } from '../shared/dto/adicionarFeitico';
+import { EditarFeiticoDominadoDTO, EditarFeiticoAAprenderDTO } from '../shared/dto/editarFeitico';
 
 @Injectable({
   providedIn: 'root'
@@ -18,31 +18,50 @@ export class FeiticoService {
 
 
   getFeiticosDoUsuario(): Observable<{
-    feiticosDominados: FeiticoResponseDTO[],
-    feiticosAAprender: FeiticoResponseDTO[]
+    feiticosDominados: FeiticoDominadoResponseDTO[],
+    feiticosAAprender: FeiticoAAprenderResponseDTO[]
   }> {
     return this.httpClient.get<{
-      feiticosDominados: FeiticoResponseDTO[],
-      feiticosAAprender: FeiticoResponseDTO[]
+      feiticosDominados: FeiticoDominadoResponseDTO[],
+      feiticosAAprender: FeiticoAAprenderResponseDTO[]
     }>(this.apiUrl);
   }
 
-  adicionarFeitico(tipo: 'dominados' | 'a-aprender', dto: AdicionarFeiticoDTO): Observable<{ mensagem: string }> {
-    // se o tipo for dominados usar dominados, senao usar a aprender
-    // if(tipo === 'dominados'){
-    //    endpoint = 'dominados';
-    //}else{
-    //    endpoint = 'a-aprender';
-    //}
-    const endpoint = tipo === 'dominados' ? 'dominados' : 'a-aprender';
+  adicionarFeitico(
+    tipo: 'dominados',
+    dto: AdicionarDominadoDTO
+  ): Observable<{ mensagem: string }>;
+  adicionarFeitico(
+    tipo: 'a-aprender',
+    dto: AdicionarAAprenderDTO
+  ): Observable<{ mensagem: string }>;
+  adicionarFeitico(
+    tipo: 'dominados' | 'a-aprender',
+    dto: AdicionarDominadoDTO | AdicionarAAprenderDTO
+  ): Observable<{ mensagem: string }> {
+    const endpoint = tipo;
     return this.httpClient.post<{ mensagem: string }>(`${this.apiUrl}/${endpoint}`, dto).pipe(
       tap(res => console.log(res.mensagem))
     );
   }
 
 
-  editarFeitico(tipo: 'dominados' | 'a-aprender', nome: string, dto: EditarFeiticoDTO): Observable<{ mensagem: string }> {
-    const endpoint = tipo === 'dominados' ? 'dominados' : 'a-aprender';
+  editarFeitico(
+    tipo: 'dominados',
+    nome: string,
+    dto: EditarFeiticoDominadoDTO
+  ): Observable<{ mensagem: string }>;
+  editarFeitico(
+    tipo: 'a-aprender',
+    nome: string,
+    dto: EditarFeiticoAAprenderDTO
+  ): Observable<{ mensagem: string }>;
+  editarFeitico(
+    tipo: 'dominados' | 'a-aprender',
+    nome: string,
+    dto: EditarFeiticoDominadoDTO | EditarFeiticoAAprenderDTO
+  ): Observable<{ mensagem: string }> {
+    const endpoint = tipo;
     return this.httpClient.put<{ mensagem: string }>(`${this.apiUrl}/${endpoint}/${nome}`, dto).pipe(
       tap(res => console.log(res.mensagem))
     );

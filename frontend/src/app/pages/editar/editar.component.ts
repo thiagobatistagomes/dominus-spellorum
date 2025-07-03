@@ -1,11 +1,12 @@
 import { FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { FeiticoService } from "../../services/feitico.service";
 import { Component } from "@angular/core";
-import { EditForm } from "../../shared/models/dashboard/dashBoardForms.model";
+import { EditAAprenderForm, EditDominadoForm } from "../../shared/models/dashboard/dashBoardForms.model";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
-import { EditarFeiticoDTO } from "../../shared/dto/editarFeitico";
+import { EditarFeiticoAAprenderDTO, EditarFeiticoDominadoDTO } from "../../shared/dto/editarFeitico";
 import { CommonModule } from "@angular/common";
+import { EventDispatcher } from "@angular/core/primitives/event-dispatch";
 
 
 
@@ -25,9 +26,9 @@ import { CommonModule } from "@angular/common";
     standalone: true
 })
 export class EditarComponent {
-    editForm: FormGroup = EditForm;
+    editForm!: FormGroup;
     tipoSelecionado: 'dominados' | 'a-aprender' = 'dominados';
-    nomeFeitico!: string;
+    nome!: string;
 
 
     constructor (
@@ -40,35 +41,50 @@ export class EditarComponent {
             const tipo = params['tipo'];
             const nome = params['nome'];
 
-            if (tipo === 'dominados' || tipo === 'a-aprender') {
-                this.tipoSelecionado = tipo;
-            } else {
+            if (tipo !== 'dominados' && tipo !== 'a-aprender') {
                 this.toastr.error("Tipo inválido ou ausente!");
                 this.router.navigate(['/dashboard']);
+                return;
             }
 
-            if (nome) {
-                this.nomeFeitico = nome;
-            } else {
+            if (!nome) {
                 this.toastr.error("Nome do feitiço ausente!");
                 this.router.navigate(['/dashboard']);
+                return;
             }
+
+            this.tipoSelecionado = tipo;
+            this.nome = nome;
+            this.initForm();
 
         });
     }
 
-    submit(){
-        const editData: EditarFeiticoDTO = this.editForm.value;
-        
-        if (!this.nomeFeitico || !this.tipoSelecionado) {
-            this.toastr.error('Dados insuficientes para editar!');
-            return;
-        }
+    initForm() {
+        this.editForm = this.tipoSelecionado === 'dominados' ? EditDominadoForm : EditAAprenderForm;
+    }
 
-        this.feiticoService.editarFeitico(this.tipoSelecionado, this.nomeFeitico, editData).subscribe({
-            next: () => {this.toastr.success("Comentário adicionado com sucesso!"), this.router.navigate(["/dashboard"])},
-            error: () => this.toastr.error("Erro inesperado! Tente novamente mais tarde!")
-        })
+    submit(){
+        
+        if (this.tipoSelecionado === 'dominados') {
+            const editData: EditarFeiticoDominadoDTO = this.editForm.value;
+            this.feiticoService.editarFeitico('dominados', this.nome, editData).subscribe({
+                next: () => {
+                    this.toastr.success("Feitiço editado com sucesso!");
+                            this.router.navigate(["/dashboard"]);
+                        },
+                        error: () => this.toastr.error("Erro inesperado! Tente novamente mais tarde!")
+                    });
+        } else {
+            const editData: EditarFeiticoAAprenderDTO = this.editForm.value;
+            this.feiticoService.editarFeitico('a-aprender', this.nome, editData).subscribe({
+                next: () => {
+                    this.toastr.success("Feitiço editado com sucesso!");
+                    this.router.navigate(["/dashboard"]);
+                },
+                error: () => this.toastr.error("Erro inesperado! Tente novamente mais tarde!")
+                });
+        }
 
         this.editForm.reset();
     }

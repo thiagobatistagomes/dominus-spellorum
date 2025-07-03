@@ -48,7 +48,7 @@ label {
 }
 
 
-input {
+input, select {
   padding: 0.5rem;
   border: 1px solid #c0a060;
   border-radius: 4px;
@@ -58,7 +58,7 @@ input {
   transition: border-color 0.3s ease;
 }
 
-input:focus {
+input:focus, select:focus {
   outline: none;
   border-color: #d8b36a;
   background-color: #222;

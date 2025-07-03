@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FeiticoService } from '../../services/feitico.service';
-import { FeiticoResponseDTO } from '../../shared/dto/feiticoResponse';
+import { FeiticoAAprenderResponseDTO, FeiticoDominadoResponseDTO } from '../../shared/dto/feiticoResponse';
 import { ToastrService } from 'ngx-toastr';
 import { Router, RouterModule } from '@angular/router';
 
@@ -15,8 +15,8 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class DashboardComponent {
 
-  feiticosDominados: FeiticoResponseDTO[] = [];
-  feiticosAAprender: FeiticoResponseDTO[] = [];
+  feiticosDominados: FeiticoDominadoResponseDTO[] = [];
+  feiticosAAprender: FeiticoAAprenderResponseDTO[] = [];
   feiticoSelecionado: { tipo: 'dominados' | 'a-aprender', nome: string } | null = null;
 
   loading = true;

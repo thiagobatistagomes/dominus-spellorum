@@ -15,6 +15,33 @@
     <input id="comentario" type="text" formControlName="comentario" placeholder="Observações ou lembretes">
   </div>
 
+  <div *ngIf="tipoSelecionado === 'a-aprender'">
+    <div class="form-group">
+      <label for="status">Status</label>
+      <select id="status" formControlName="status" required>
+        <option value="" disabled selected>Selecione o status</option>
+        <option value="pendente">Pendente</option>
+        <option value="em progresso">Em Progresso</option>
+      </select>
+      <div class="error-messages" *ngIf="addForm.get('status')?.touched && addForm.get('status')?.invalid">
+        <small>O status é obrigatório.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="prioridade">Prioridade</label>
+      <select id="prioridade" formControlName="prioridade" required>
+        <option value="" disabled selected>Selecione a prioridade</option>
+        <option value="alta">Alta</option>
+        <option value="média">Média</option>
+        <option value="baixa">Baixa</option>
+      </select>
+      <div class="error-messages" *ngIf="addForm.get('prioridade')?.touched && addForm.get('prioridade')?.invalid">
+        <small>A prioridade é obrigatória.</small>
+      </div>
+    </div>
+  </div>
+
   <button type="submit" [disabled]="addForm.invalid">+ Adicionar</button>
 
   <p class="link">

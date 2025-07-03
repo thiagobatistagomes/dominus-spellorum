@@ -1,7 +1,7 @@
 <h2>Editar Comentário do Feitiço</h2>
 
 <div class="info">
-  <p><strong>Feitiço:</strong> {{ nomeFeitico }}</p>
+  <p><strong>Feitiço:</strong> {{ nome }}</p>
   <p><strong>Tipo:</strong> {{ tipoSelecionado }}</p>
 </div>
 
@@ -11,6 +11,33 @@
     <input id="comentario" type="text" formControlName="comentario" placeholder="Novo comentário ou observação">
     <div class="error-messages" *ngIf="editForm.get('comentario')?.touched && editForm.get('comentario')?.invalid">
       <small>Comentário inválido.</small>
+    </div>
+  </div>
+
+  <div *ngIf="tipoSelecionado === 'a-aprender'">
+    <div class="form-group">
+      <label for="status">Status</label>
+      <select id="status" formControlName="status" required>
+        <option value="" disabled selected>Selecione o status</option>
+        <option value="pendente">Pendente</option>
+        <option value="em progresso">Em Progresso</option>
+      </select>
+      <div class="error-messages" *ngIf="editForm.get('status')?.touched && editForm.get('status')?.invalid">
+        <small>O status é obrigatório.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="prioridade">Prioridade</label>
+      <select id="prioridade" formControlName="prioridade" required>
+        <option value="" disabled selected>Selecione a prioridade</option>
+        <option value="alta">Alta</option>
+        <option value="média">Média</option>
+        <option value="baixa">Baixa</option>
+      </select>
+      <div class="error-messages" *ngIf="editForm.get('prioridade')?.touched && editForm.get('prioridade')?.invalid">
+        <small>A prioridade é obrigatória.</small>
+      </div>
     </div>
   </div>
 
