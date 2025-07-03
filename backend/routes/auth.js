@@ -1,5 +1,6 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 const { v4: uuidv4 } = require('uuid');
 const { buscarUsuarioPorEmail, attBdUsuarios, acessarBancoUsuarios } = require('../repositories/usuariosBD');
 
@@ -41,12 +42,14 @@ router.post('/register', async (req, res) => {
     return res.status(400).json({ mensagem: 'Não foi possível realizar o cadastro. Verifique os dados e tente novamente.' });
   }
   
+  // hash da senha para criptografar
+  const hashSenha = await bcrypt.hash(senha, 10);
 
   const novoUsuario = {
     id: uuidv4(),
     nome,
     email,
-    senha,
+    senha: hashSenha,
     feiticosDominados: [],
     feiticosAAprender: []
   };
@@ -70,7 +73,13 @@ router.post('/login', async (req, res) => {
   try{
     const usuario = await buscarUsuarioPorEmail(email);
 
-    if (!usuario || usuario.senha !== senha) {
+    if (!usuario) {
+      return res.status(401).json({ mensagem: 'Usuário não encontrado.' });
+    }
+
+    const senhaCorreta = await bcrypt.compare(senha, usuario.senha);
+
+    if (!senhaCorreta) {
       return res.status(401).json({ mensagem: 'Credenciais inválidas.' });
     }
 

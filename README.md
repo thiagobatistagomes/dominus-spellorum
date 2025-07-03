@@ -70,7 +70,4 @@ ng serve
 
 ## 📂 Estrutura do projeto
 
-dominus-spellorum/
-├── frontend/ → Aplicação Angular
-├── backend/ → API Express com arquivos JSON
-└── README.md
+<pre> ```text dominus-spellorum/ ├── frontend/ → Aplicação Angular ├── backend/ → API Express com arquivos JSON └── README.md ``` </pre>

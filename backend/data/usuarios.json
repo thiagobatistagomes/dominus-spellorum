@@ -164,5 +164,13 @@
         "comentario": ""
       }
     ]
+  },
+  {
+    "id": "355b1c49-cb65-4167-9fa8-de89c82965e2",
+    "nome": "teste",
+    "email": "teste@teste.com",
+    "senha": "$2b$10$fiBkLt2P2grNJ4ORcZS39u9q8g4YVsXbk/r2yogASC8YJv2iM8/w2",
+    "feiticosDominados": [],
+    "feiticosAAprender": []
   }
 ]
