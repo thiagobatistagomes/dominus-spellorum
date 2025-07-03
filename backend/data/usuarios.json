@@ -1,176 +1,24 @@
 [
   {
-    "id": "d7fcf560-0083-4709-81f2-310b05e6c661",
+    "id": "0fc72e86-8e55-4158-854c-f2eb6ddbfcf3",
     "nome": "Hermione Granger",
     "email": "hermione@hogwarts.com",
-    "senha": "1234",
+    "senha": "$2b$10$q3r8hRSQ.bqP//d7EPmr2uc5gYHPh3/QeGPshqmm83WTrVr8/5Vfm",
     "feiticosDominados": [
-      {
-        "name": "Alohomora",
-        "description": "Unlocks objects",
-        "comentario": "Teste edição!"
-      },
       {
         "name": "Wingardium Leviosa",
         "description": "Causes an object to levitate; but remember what Hermione said: \"It's Wing-gar-dium Levi-o-sa, make the 'gar' nice and long.'\"",
-        "comentario": "Aprendam a entonar corretamente o feitiço!"
-      },
-      {
-        "name": "Sonorus",
-        "description": "Amplifies the witch or wizard's voice",
-        "comentario": "Atualizando comentário"
-      },
-      {
-        "name": "Anapneo",
-        "description": "Clears someone's airway",
-        "comentario": ""
-      }
-    ],
-    "feiticosAAprender": [
-      {
-        "name": "Aberto",
-        "description": "Opens locked doors",
-        "comentario": "Quero muito aprender isso!"
-      },
-      {
-        "name": "Apparate",
-        "description": "A non-verbal transportation spell that allows a witch or wizard to instantly travel on the spot and appear at another location (disapparate is the opposite)",
-        "comentario": null
-      },
-      {
-        "name": "Aparecium",
-        "description": "Reveals secret written messages",
-        "comentario": ""
-      }
-    ]
-  },
-  {
-    "id": "6f013a7e-ea37-4a2d-8881-476d6492df33",
-    "nome": "Rony Weasley",
-    "email": "ron@hogwarts.com",
-    "senha": "4321",
-    "feiticosDominados": [],
-    "feiticosAAprender": []
-  },
-  {
-    "id": "f76b40c3-120b-46b6-8c2a-1522f748fa1f",
-    "nome": "Harry Potter",
-    "email": "harry@hogwarts.com",
-    "senha": "4321",
-    "feiticosDominados": [
-      {
-        "name": "Expecto patronum",
-        "description": "The Patronus Charm is a powerful projection of hope and happiness that drives away Dementors; a corpeal Patronus takes the the respective animal form of the caster, while a non-corpeal appears as a wisp of light; at 13, Harry Potter was the youngest known witch or wizard to prouduce a corpeal Patronus",
-        "comentario": ""
-      },
-      {
-        "name": "Accio",
-        "description": "Summons objects",
-        "comentario": null
-      },
-      {
-        "name": "Aberto",
-        "description": "Opens locked doors",
-        "comentario": null
-      },
-      {
-        "name": "Anapneo",
-        "description": "Clears someone's airway",
-        "comentario": null
-      },
-      {
-        "name": "Apparate",
-        "description": "A non-verbal transportation spell that allows a witch or wizard to instantly travel on the spot and appear at another location (disapparate is the opposite)",
-        "comentario": null
-      },
-      {
-        "name": "Ascendio",
-        "description": "Propells someone into the air",
-        "comentario": null
-      },
-      {
-        "name": "Avada Kedavra",
-        "description": "Also known as The Killing Curse, the most evil spell in the Wizarding World; one of three Unforgivable Curses; Harry Potter is the only known witch or wizard to survive it",
-        "comentario": null
+        "comentario": "Aprendam a entonar este feitiço corretamente!"
       }
     ],
     "feiticosAAprender": [
       {
         "name": "Alohomora",
         "description": "Unlocks objects",
-        "comentario": ""
+        "comentario": "Isto será muito util!",
+        "status": "pendente",
+        "prioridade": "alta"
       }
     ]
-  },
-  {
-    "id": "6661e131-9ef4-497a-88e3-6c9687f4654e",
-    "nome": "Ginnny Weasley",
-    "email": "ginny@hogwarts.com",
-    "senha": "4321",
-    "feiticosDominados": [
-      {
-        "name": "Sonorus",
-        "description": "Amplifies the witch or wizard's voice",
-        "comentario": "Meu primeiro feitiço!"
-      },
-      {
-        "name": "Alohomora",
-        "description": "Unlocks objects",
-        "comentario": ""
-      },
-      {
-        "name": "Wingardium Leviosa",
-        "description": "Causes an object to levitate; but remember what Hermione said: \"It's Wing-gar-dium Levi-o-sa, make the 'gar' nice and long.'\"",
-        "comentario": ""
-      }
-    ],
-    "feiticosAAprender": [
-      {
-        "name": "Expecto patronum",
-        "description": "The Patronus Charm is a powerful projection of hope and happiness that drives away Dementors; a corpeal Patronus takes the the respective animal form of the caster, while a non-corpeal appears as a wisp of light; at 13, Harry Potter was the youngest known witch or wizard to prouduce a corpeal Patronus",
-        "comentario": ""
-      }
-    ]
-  },
-  {
-    "id": "c0714c42-3987-4e3f-a17c-c4aa3b2efac6",
-    "nome": "draco",
-    "email": "draco@hogwarts.com",
-    "senha": "1234",
-    "feiticosDominados": [],
-    "feiticosAAprender": []
-  },
-  {
-    "id": "9f8e500f-6688-41cc-bbd1-27da8b2bb824",
-    "nome": "Fred",
-    "email": "fred@hogwarts.com",
-    "senha": "1234",
-    "feiticosDominados": [
-      {
-        "name": "Alohomora",
-        "description": "Unlocks objects",
-        "comentario": ""
-      }
-    ],
-    "feiticosAAprender": [
-      {
-        "name": "Aguamenti",
-        "description": "Summons water",
-        "comentario": ""
-      },
-      {
-        "name": "Anapneo",
-        "description": "Clears someone's airway",
-        "comentario": ""
-      }
-    ]
-  },
-  {
-    "id": "355b1c49-cb65-4167-9fa8-de89c82965e2",
-    "nome": "teste",
-    "email": "teste@teste.com",
-    "senha": "$2b$10$fiBkLt2P2grNJ4ORcZS39u9q8g4YVsXbk/r2yogASC8YJv2iM8/w2",
-    "feiticosDominados": [],
-    "feiticosAAprender": []
   }
 ]

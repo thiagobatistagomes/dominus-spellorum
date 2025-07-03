@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,8 @@ import { CommonModule } from '@angular/common';
 export class App {
 
   constructor (
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {
 
   }
@@ -30,10 +32,11 @@ export class App {
 
   logout() {
     localStorage.clear();
+    this.toastr.success("Melfeito Feito!");
     this.router.navigate(['']);
   }
 
   navigate() {
-    this.router.navigate([""])
+    this.router.navigate([''])
   }
 }
