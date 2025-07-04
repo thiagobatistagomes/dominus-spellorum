@@ -1,23 +1,23 @@
 [
   {
-    "id": "0fc72e86-8e55-4158-854c-f2eb6ddbfcf3",
-    "nome": "Hermione Granger",
-    "email": "hermione@hogwarts.com",
-    "senha": "$2b$10$q3r8hRSQ.bqP//d7EPmr2uc5gYHPh3/QeGPshqmm83WTrVr8/5Vfm",
+    "id": "91922ca4-8fca-46e4-86ae-b38a4e286d28",
+    "nome": "Harry Potter",
+    "email": "harry@hogwarts.com",
+    "senha": "$2b$10$S0BR0SckBVeAfv8HCky5d.w1SwqtPhuNLPEMvw4vegO8i.S9RbSUi",
     "feiticosDominados": [
       {
-        "name": "Wingardium Leviosa",
-        "description": "Causes an object to levitate; but remember what Hermione said: \"It's Wing-gar-dium Levi-o-sa, make the 'gar' nice and long.'\"",
-        "comentario": "Aprendam a entonar este feitiço corretamente!"
+        "name": "Expecto patronum",
+        "description": "The Patronus Charm is a powerful projection of hope and happiness that drives away Dementors; a corpeal Patronus takes the the respective animal form of the caster, while a non-corpeal appears as a wisp of light; at 13, Harry Potter was the youngest known witch or wizard to prouduce a corpeal Patronus",
+        "comentario": "Bom demais!!"
       }
     ],
     "feiticosAAprender": [
       {
-        "name": "Alohomora",
-        "description": "Unlocks objects",
-        "comentario": "Isto será muito util!",
-        "status": "pendente",
-        "prioridade": "alta"
+        "name": "Accio",
+        "description": "Summons objects",
+        "comentario": "Legal!",
+        "status": "Pendente",
+        "prioridade": "Média"
       }
     ]
   }

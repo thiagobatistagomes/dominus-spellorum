@@ -11,8 +11,8 @@ const { acessarBancoUsuarios, buscarUsuarioPorEmail, attBdUsuarios } = require('
 const usuariosPath = path.resolve(process.env.USUARIOS_JSON);
 
 
-const statusPermitidos = ['pendente', 'em progresso'];
-const prioridadesPermitidas = ['alta', 'média', 'baixa'];
+const statusPermitidos = ['Pendente', 'Em progresso'];
+const prioridadesPermitidas = ['Alta', 'Média', 'Baixa'];
 
 router.get('/', verifyToken, async (req, res) => {
   try {
@@ -88,7 +88,7 @@ router.post('/dominados', verifyToken, async (req, res) => {
 
 
 router.post('/a-aprender', verifyToken, async (req, res) => {
-  const { name, comentario = '', status = 'pendente', prioridade = 'média' } = req.body;
+  const { name, comentario = '', status = 'Pendente', prioridade = 'Média' } = req.body;
 
   if(!name){
     res.status(500).json({ mensagem: 'O nome do feitiço é obrigatório!' });

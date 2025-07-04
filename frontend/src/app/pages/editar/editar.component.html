@@ -19,8 +19,8 @@
       <label for="status">Status</label>
       <select id="status" formControlName="status" required>
         <option value="" disabled selected>Selecione o status</option>
-        <option value="pendente">Pendente</option>
-        <option value="em progresso">Em Progresso</option>
+        <option value="Pendente">Pendente</option>
+        <option value="Em progresso">Em Progresso</option>
       </select>
       <div class="error-messages" *ngIf="editForm.get('status')?.touched && editForm.get('status')?.invalid">
         <small>O status é obrigatório.</small>
@@ -31,9 +31,9 @@
       <label for="prioridade">Prioridade</label>
       <select id="prioridade" formControlName="prioridade" required>
         <option value="" disabled selected>Selecione a prioridade</option>
-        <option value="alta">Alta</option>
-        <option value="média">Média</option>
-        <option value="baixa">Baixa</option>
+        <option value="Alta">Alta</option>
+        <option value="Média">Média</option>
+        <option value="Baixa">Baixa</option>
       </select>
       <div class="error-messages" *ngIf="editForm.get('prioridade')?.touched && editForm.get('prioridade')?.invalid">
         <small>A prioridade é obrigatória.</small>

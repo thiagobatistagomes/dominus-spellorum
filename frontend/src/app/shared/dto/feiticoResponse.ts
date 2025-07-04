@@ -8,7 +8,7 @@ export interface FeiticoAAprenderResponseDTO {
   name: string;
   description: string;
   comentario: string;
-  status: 'pendente' | 'em progresso';
-  prioridade: 'alta' | 'média' | 'baixa';
+  status: 'Pendente' | 'Em progresso';
+  prioridade: 'Alta' | 'Média' | 'Baixa';
 }
 

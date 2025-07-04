@@ -4,6 +4,6 @@ export interface EditarFeiticoDominadoDTO {
 
 export interface EditarFeiticoAAprenderDTO {
   comentario?: string;
-  status?: 'pendente' | 'em progresso';
-  prioridade?: 'alta' | 'média' | 'baixa';
+  status?: 'Pendente' | 'Em progresso';
+  prioridade?: 'Alta' | 'Média' | 'Baixa';
 }

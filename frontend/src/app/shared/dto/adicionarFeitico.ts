@@ -6,6 +6,6 @@ export interface AdicionarDominadoDTO {
 export interface AdicionarAAprenderDTO {
   name: string;
   comentario?: string;
-  status: 'pendente' | 'em progresso';
-  prioridade: 'alta' | 'média' | 'baixa';
+  status: 'Pendente' | 'Em progresso';
+  prioridade: 'Alta' | 'Média' | 'Baixa';
 }
