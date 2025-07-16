@@ -91,7 +91,7 @@ router.post('/a-aprender', verifyToken, async (req, res) => {
   const { name, comentario = '', status = 'Pendente', prioridade = 'Média' } = req.body;
 
   if(!name){
-    res.status(500).json({ mensagem: 'O nome do feitiço é obrigatório!' });
+    res.status(409).json({ mensagem: 'O nome do feitiço é obrigatório!' });
   }
 
   if (!statusPermitidos.includes(status)) {
