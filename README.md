@@ -76,12 +76,9 @@ dominus-spellorum/
 ├── backend/ → API Express com arquivos JSON
 └── README.md
 
----
 
 ## 🗃️ Modelo Entidade-Relacionamento (MER)
 
 Abaixo está o diagrama MER que representa as entidades e relacionamentos do Dominus Spellorum:
 
 ![Diagrama MER](./assets/Dominus_Spellorum_MER.png)
-
----
